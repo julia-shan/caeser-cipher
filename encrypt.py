@@ -5,7 +5,7 @@ def encrypt(text, shift):
     for i in range(len(text)):
         char = text[i]
 
-        if(char == " "):
+        if(ord(char) < 65 or ord(char) > 122):
             cipher += char
         elif(char.isupper()):
             cipher += chr((ord(char) + shift - 65) % 26 + 65)
