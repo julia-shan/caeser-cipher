@@ -1,6 +1,6 @@
 from encrypt import encrypt
 
-def main():
+def main(): 
     text = input("Enter text to encrypt: ")
     shift = input("Enter shift pattern number: ")
     if not type(shift) is int: 
