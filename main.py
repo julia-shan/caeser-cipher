@@ -1,4 +1,5 @@
 from encrypt import encrypt
+
 from decrypt import decrypt
 
 def main(): 
@@ -14,9 +15,10 @@ def main():
         print("Unencrypted text: " + text)
         print("Number of shifts: " + str(shift))
         print("Encrypted textt: " + encrypt(text, shift))
+
     if(mode.lower() == "decrypt"):
-        text = input("Enter text to encrypt: ")
-        shift = input("Enter shift pattern number if known else put 0: ")
+        text = input("Enter text to decrypt: ")
+        shift = input("Enter shift pattern number if known, otherwise enter 0: ")
         if not type(shift) is int: 
             try: 
                 shift = int(shift)
@@ -24,7 +26,14 @@ def main():
                 print("Please enter an integer")
         print("Encrypted text: " + text)
         print("Number of shifts: " + str(shift))
-        print("Decrypted textt: " + encrypt(text, shift))
+        decrypted_keys = decrypt(text,shift)
+        if(len(decrypted_keys) == 1):
+            print("Decrypted text: " + decrypted_keys[0])
+        elif(len(decrypted_keys) == 26):
+            for index in range(26):
+                print("Decrypted key #" + str(index) + ": " + decrypted_keys[index])
+        else:
+            print("Decryption failed")
 
 if __name__ == '__main__':
     main()
